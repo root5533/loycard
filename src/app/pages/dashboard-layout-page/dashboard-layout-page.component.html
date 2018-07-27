@@ -1,0 +1,197 @@
+<div class="content-header row">
+  <div class="content-header-left col-md-6 col-12 mb-1">
+    <h3 class="content-header-title">Dashboard</h3>
+  </div>
+</div>
+
+<div *ngIf="isAdmin" class="content-body" id="non_vendor_dashboard">
+  <div class="row">
+    <div class="col-xl-3 col-lg-6 col-12">
+      <div class="card">
+        <div class="card-content">
+          <div class="media align-items-stretch">
+            <div class="p-2 white media-body">
+              <h5>Total Sales Representative</h5>
+              <h5 class="text-bold-400 mb-0">
+                <i class="ft-plus"></i> {{totalSalesRepresentatives}}</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 col-12">
+      <div class="card">
+        <div class="card-content">
+          <div class="media align-items-stretch">
+            <div class="p-2 white media-body">
+              <h5>Total Users</h5>
+              <h5 class="text-bold-400 mb-0">
+                <i class="ft-arrow-up"></i>{{totalAdminCustomers}}</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 col-12">
+      <div class="card">
+        <div class="card-content">
+          <div class="media align-items-stretch">
+            <div class="p-2 white media-body">
+              <h5>Total Vendors</h5>
+              <h5 class="text-bold-400 mb-0">
+                <i class="ft-arrow-down"></i> {{ totalVendors }}</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 col-12">
+      <div class="card">
+        <div class="card-content">
+          <div class="media align-items-stretch">
+            <div class="p-2 white media-body">
+              <h5>Total Profit</h5>
+              <h5 class="text-bold-400 mb-0">
+                <i class="ft-arrow-up"></i> 5.6 M</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!isVendor && !isAdmin" class="content-body" id="non_vendor_dashboard">
+  <div class="row">
+    <div class="col-xl-3 col-lg-6 col-12">
+      <div class="card">
+        <div class="card-content">
+          <div class="media align-items-stretch">
+            <div class="p-2 white media-body">
+              <h5>New Vendors</h5>
+              <h5 class="text-bold-400 mb-0">
+                <i class="ft-plus"></i> {{ newVendors }}</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 col-12">
+      <div class="card">
+        <div class="card-content">
+          <div class="media align-items-stretch">
+            <div class="p-2 white media-body">
+              <h5>Active Vendors</h5>
+              <h5 class="text-bold-400 mb-0">
+                <i class="ft-arrow-up"></i>{{ activeVendors }}</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 col-12">
+      <div class="card">
+        <div class="card-content">
+          <div class="media align-items-stretch">
+            <div class="p-2 white media-body">
+              <h5>Inactive Vendors</h5>
+              <h5 class="text-bold-400 mb-0">
+                <i class="ft-arrow-down"></i> {{ totalVendors - activeVendors }}</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 col-12">
+      <div class="card">
+        <div class="card-content">
+          <div class="media align-items-stretch">
+            <div class="p-2 white media-body">
+              <h5>Total Vendors</h5>
+              <h5 class="text-bold-400 mb-0">
+                <i class="ft-arrow-up"></i> {{ totalVendors }}</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="isVendor" class="content-body" id="vendor_dashboard">
+  <div class="row">
+    <div class="col-xl-3 col-lg-6 col-12">
+      <div class="card">
+        <div class="card-content">
+          <div class="media align-items-stretch">
+            <div class="p-2 white media-body">
+              <h5>Total Customers</h5>
+              <h5 class="text-bold-400 mb-0">
+                <i class="ft-plus"></i> {{ totalVendorCustomers }}</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 col-12">
+      <div class="card">
+        <div class="card-content">
+          <div class="media align-items-stretch">
+            <div class="p-2 white media-body">
+              <h5>Total Punches</h5>
+              <h5 class="text-bold-400 mb-0">
+                <i class="ft-arrow-up"></i>{{ totalVendorPurchaseCount }}</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 col-12">
+      <div class="card">
+        <div class="card-content">
+          <div class="media align-items-stretch">
+            <div class="p-2 white media-body">
+              <h5>Active Deals</h5>
+              <h5 class="text-bold-400 mb-0">
+                <i class="ft-arrow-down"></i> {{ activedeals }}</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 col-12">
+      <div class="card">
+        <div class="card-content">
+          <div class="media align-items-stretch">
+            <div class="p-2 white media-body">
+              <h5>Total Redeem Deals</h5>
+              <h5 class="text-bold-400 mb-0">
+                <i class="ft-arrow-up"></i>{{ totalVendorRewardsIssued }}</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="isVendor || isAdmin" class="row">
+  <div class="col-md-6 col-sm-12">
+    <div class="card">
+      <div class="card-content collapse show">
+        <div class="card-body chartjs">
+          <canvas id="pie-chart-1" height="500"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 col-sm-12">
+    <div class="card">
+      <div class="card-content collapse show">
+        <div class="card-body chartjs">
+          <canvas id="pie-chart-2" height="500"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

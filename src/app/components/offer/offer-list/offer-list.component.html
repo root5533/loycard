@@ -1,0 +1,81 @@
+<div class="content-header row">
+    <div class="content-header-left col-md-6 col-12 mb-1">
+      <h3 class="content-header-title">Offer List</h3>
+    </div>
+    <div class="content-header-right breadcrumbs-right breadcrumbs-top col-md-6 col-12">
+      <div class="breadcrumb-wrapper col-12">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a routerLink="/dashboard">Home</a>
+          </li>
+          <li class="breadcrumb-item active"><a href="#">Offer List</a>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+  <div class="content-body">
+  
+    <!-- Responsive tables start -->
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <!-- <div class="card-header">
+            <h4 class="card-title">Responsive tables</h4>
+          </div> -->
+          <div class="card-content collapse show">
+            <div class="table-responsive">
+              <div class="bd-example">
+                <table class="table table-responsive">
+                  <thead class="hidden-sm">
+                    <tr>
+                      <th scope="col">Description</th>
+                      <th scope="col">Purchase Per Reward</th>
+                      <th scope="col">Reward</th>
+                      <!-- <th>Image</th> -->
+                      <th>Active</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let o of offers | async">
+                      <td class="hidden-md">
+                        <tr>
+                          <td class="custom-td"><b>Description</b></td>
+                          <td class="custom-td">{{ o.description }}</td>
+                        </tr>
+                        <tr>
+                          <td class="custom-td"><b>Purchase/Reward</b></td>
+                          <td class="custom-td">{{ o.purchasesPerReward }}</td>
+                        </tr>
+                        <tr>
+                          <td class="custom-td"><b>Reward</b></td>
+                          <td class="custom-td">{{ o.reward }}</td>
+                        </tr>
+                        <!-- <tr>
+                          <td class="custom-td"><b>Image</b></td>
+                          <td class="custom-td"><img width="100" src="{{ o.offerPic }}"></td>
+                        </tr> -->
+
+                        <!-- <span class="hs-135"><b> </b></span>  <br>
+                        <span class="hs-135"><b> </b></span> <br>
+                        <span class="hs-135"><b> </b></span>  <br>
+                        <span class="hs-135"><b>: </b></span>  <br> -->
+                      </td>
+                      <td class="hidden-sm">{{ o.description }}</td>
+                      <td class="hidden-sm">{{ o.purchasesPerReward }}</td>
+                      <td class="hidden-sm">{{ o.reward }}</td>
+                      <td class="hidden-sm">
+                        <input type="checkbox" class="form-control" [checked]="o.active" (change)="offerActive(o, $event)">
+                      </td>
+                      <!-- <td class="hidden-sm"><img width="100" src="{{ o.offerPic }}"></td> -->
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Responsive tables end -->
+  </div>
+ 

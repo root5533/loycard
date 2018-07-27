@@ -1,0 +1,375 @@
+<div class="content-header row">
+  <div class="content-header-left col-md-6 col-12 mb-1">
+    <h3 class="content-header-title">Profile</h3>
+  </div>
+  <div class="content-header-right breadcrumbs-right breadcrumbs-top col-md-6 col-12">
+    <div class="breadcrumb-wrapper col-12">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/dashboard">Home</a>
+        </li>
+        <li class="breadcrumb-item active"><a href="#">Profile</a>
+        </li>
+      </ol>
+    </div>
+  </div>
+</div>
+<div class="content-body">
+  <!-- Vertical Tabs start -->
+  <section id="justified-top-border">
+    <div class="row match-height">
+      <div class="col-xl-12 col-lg-12">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+             
+              <ul class="nav nav-tabs nav-top-border no-hover-bg nav-justified">
+                <li class="nav-item">
+                  <a class="nav-link active" id="baseVerticalLeft1-tab1" data-toggle="tab" aria-controls="tabVerticalLeft11" href="#contactInfotab" aria-expanded="true">Contact Info</a>
+                </li>
+
+                <li class="nav-item" *ngIf="userRole=='2'" >
+                    <a class="nav-link" id="businessinfotab" data-toggle="tab" aria-controls="tt" href="#businessInfoTab" aria-expanded="false">Business Info</a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" id="baseVerticalLeft1-tab2" data-toggle="tab" aria-controls="tabVerticalLeft12" href="#profilePictureTab" aria-expanded="false">Profile Picture</a>
+                </li>
+
+                <li class="nav-item" *ngIf="userRole=='0'">
+                  <a class="nav-link" id="baseVerticalLeft1-tab3" data-toggle="tab" aria-controls="tabVerticalLeft13" href="#subscriptionStatusTab" aria-expanded="false">Subscription Status</a>
+                </li>
+              </ul>
+            
+              <div class="tab-content pt-1">
+                <div role="tabpanel" class="tab-pane active" id="contactInfotab" aria-expanded="true" aria-labelledby="baseVerticalLeft1-tab1">
+                  <div class="card">
+                    <div class="card-content collapse show">
+                      <div class="card-body">
+
+                        <form id="contact-info" class="form" #contactInfo="ngForm" (ngSubmit)="updateContactInfo(contactInfo)">
+                          <div class="form-body">
+                            
+                            <h4 class="form-section">
+                              <i class="ft-mail"></i> Contact Info
+                            </h4>
+                            
+                            <div class="form-group">
+                              <label>Name</label>
+                              <input class="form-control border-primary" type="text" [(ngModel)]="user.name" name="name" #nameErr="ngModel" pattern="[a-zA-Z ]*" placeholder="Name" required>
+                              <div *ngIf="nameErr.errors && (nameErr.dirty || nameErr.touched)">
+                                <span class="help-block error" [hidden]="!nameErr.errors.required"> * Name is Required </span>
+                                <span class="help-block error" [hidden]="!nameErr.errors.pattern"> Name should contain letters and whitespace </span>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label>Email</label>
+                              <input class="form-control border-primary" type="email" [(ngModel)]="user.email" name="email" placeholder="Email" disabled>
+                            </div>
+                            
+                            <div class="form-group">
+                              <label>Contact Number</label>
+                              <input class="form-control border-primary" type="text" [(ngModel)]="user.contactno" name="contactno" #contactnoErr="ngModel" placeholder="Contact Number" required>
+                              <div *ngIf="contactnoErr.errors && (contactnoErr.dirty || contactnoErr.touched)">
+                                <span class="help-block error" [hidden]="!contactnoErr.errors.required"> * Contact Number is Required </span>
+                              </div>
+                            </div>
+
+                          </div>
+                          <div class="form-actions right">
+                            <button type="button" class="btn btn-warning mr-1" (click)="onClickCancel()">
+                              <i class="ft-x"></i> Cancel
+                            </button>
+                            <button type="submit" class="btn btn-primary" [disabled]="!contactInfo.valid && !contactInfo.pristine">
+                              <i class="fa fa-check-square-o"></i> Save
+                            </button>
+                          </div>
+                        </form>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div role="tabpanel" *ngIf="userRole=='2'" class="tab-pane" id="businessInfoTab" aria-expanded="true" aria-labelledby="tt-tab">
+                  <div class="card">
+                    <div class="card-content collapse show">
+                      <div class="card-body">
+
+                        <form class="form" #businessInfo="ngForm" (ngSubmit)="updateBusinessInfo(businessInfo)">
+                          <div class="form-body">
+                            <h4 class="form-section"><i class="ft-mail"></i> Business Info</h4>
+                            <div class="form-group">
+                              <label>Business Name</label>
+                              <input class="form-control border-primary" type="text" [(ngModel)]="user.businessName" name="businessName" #businessNameErr="ngModel" placeholder="Business Name" required>
+                              <div *ngIf="businessNameErr.errors && (businessNameErr.dirty || businessNameErr.touched)">
+                                <span class="help-block error" [hidden]="!businessNameErr.errors.required"> * Business Name is Required </span>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label>Business Address</label>
+                              <input class="form-control border-primary" type="text" id="businessAddress" [(ngModel)]="user.businessAddress" (input)="onBusinessAddressChange($event)" name="businessAddress" #businessAddressErr="ngModel" placeholder="Business Address" required>
+                              <div *ngIf="businessAddressErr.errors && (businessAddressErr.dirty || businessAddressErr.touched)">
+                                <span class="help-block error" [hidden]="!businessAddressErr.errors.required"> * Business Name is Required </span>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label>Apartment/Suite Number</label>
+                              <input class="form-control border-primary" type="text" id="route" [(ngModel)]="user.apt" name="apt" #aptErr="ngModel" placeholder="Apartment/Suite Number">
+                              <div *ngIf="aptErr.errors && (aptErr.dirty || aptErr.touched)">
+                                <span class="help-block error" [hidden]="!aptErr.errors.required"> * Business Name is Required </span>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label>City</label>
+                              <input class="form-control border-primary" type="text" id="locality" [(ngModel)]="user.city" name="city" #cityErr="ngModel" placeholder="City">
+                              <div *ngIf="cityErr.errors && (cityErr.dirty || cityErr.touched)">
+                                <span class="help-block error" [hidden]="!cityErr.errors.required"> * Business Name is Required </span>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label>State</label>
+                              <input class="form-control border-primary" type="text" id="administrative_area_level_1" [(ngModel)]="user.state" name="state" #stateErr="ngModel" placeholder="State">
+                              <div *ngIf="stateErr.errors && (stateErr.dirty || stateErr.touched)">
+                                <span class="help-block error" [hidden]="!stateErr.errors.required"> * Business Name is Required </span>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label>Zipcode</label>
+                              <input class="form-control border-primary" type="text" id="postal_code" [(ngModel)]="user.zipcode" name="zipCode" #zipCodeErr="ngModel" placeholder="Zipcode">
+                              <div *ngIf="zipCodeErr.errors && (zipCodeErr.dirty || zipCodeErr.touched)">
+                                <span class="help-block error" [hidden]="!zipCodeErr.errors.required"> * Business Name is Required </span>
+                              </div>
+                            </div>
+
+                            <div class="form-group row">
+                              <label class="col-md-3 label-control">
+                                <i class="fa fa-facebook-square socialIconSize"></i>
+                              </label>
+                              <div class="col-md-9">
+                                <input type="text" class="form-control"  #facebookErr="ngModel" [(ngModel)]="user.facebook" ngModel name="facebook" >
+                                <div *ngIf="facebookErr.errors && (facebookErr.dirty || facebookErr.touched)">
+                                  <span class="help-block error" [hidden]="!facebookErr.errors.required"> * Facebook is Required </span>
+                                  <!-- <span class="help-block error" [hidden]="!facebookErr.errors.pattern"> Facebook Url is Invalid</span> -->
+                                </div>
+                              </div>
+                            </div>
+                            <div class="form-group row">
+                              <label class="col-md-3 label-control">
+                                <i class="fa fa-twitter socialIconSize"></i>
+                              </label>
+                              <div class="col-md-9">
+                                <input type="text" class="form-control"  #twitterErr="ngModel" [(ngModel)]="user.twitter" ngModel  name="twitter">
+                                <div *ngIf="twitterErr.errors && (twitterErr.dirty || twitterErr.touched)">
+                                  <span class="help-block error" [hidden]="!twitterErr.errors.required"> * Twitter is Required </span>
+                                  <!-- <span class="help-block error" [hidden]="!twitterErr.errors.pattern"> Twitter Url is Invalid</span> -->
+                                </div>
+                              </div>
+                            </div>
+                            <div class="form-group row">
+                              <label class="col-md-3 label-control">
+                                <i class="fa fa-google-plus socialIconSize"></i>
+                              </label>
+                              <div class="col-md-9">
+                                <input type="text" class="form-control" #googlePlusErr="ngModel" ngModel [(ngModel)]="user.googlePlus"
+                                  name="googlePlus">
+                                <div *ngIf="googlePlusErr.errors && (googlePlusErr.dirty || googlePlusErr.touched)">
+                                  <span class="help-block error" [hidden]="!googlePlusErr.errors.required"> * Google-Plus is Required </span>
+                                  <!-- <span class="help-block error" [hidden]="!googlePlusErr.errors.pattern"> Google-Plus Url is Invalid</span> -->
+                                </div>
+                              </div>
+                            </div>
+                            <div class="form-group row">
+                              <label class="col-md-3 label-control">Web site *</label>
+                              <div class="col-md-9">
+                                <input type="text" class="form-control"  #websiteErr="ngModel" ngModel [(ngModel)]="user.website" name="website">
+                                <div *ngIf="websiteErr.errors && (websiteErr.dirty || websiteErr.touched)">
+                                  <span class="help-block error" [hidden]="!websiteErr.errors.required"> * Web site is Required </span>
+                                  <!-- <span class="help-block error" [hidden]="!websiteErr.errors.pattern"> Web site Url is Invalid</span> -->
+                                </div>
+                              </div>
+                            </div>
+                            <div class="form-group row">
+                              <label class="col-md-3 label-control">Business Hour *</label>
+                              <div class="col-md-9" *ngIf="user?.timeSlots">
+                                <div class="row"  *ngFor="let item of timeSlotList; let i=index;">
+                                  <div class="form-group col-md-2">
+                                    <label>{{item.label}}</label>
+                                  </div>
+                                  <!-- &nbsp;&nbsp;&nbsp;&nbsp; -->
+                                    <div class="form-group col-md-2" [ngClass]="{'col-md-4':user.timeSlots[i].starttime === 'closed'}">
+                                      <select class="form-control" [(ngModel)]="user.timeSlots[i].starttime" name="{{i}}" (change)="onChangeStartTime(user.timeSlots[i])">
+                                        <option *ngFor="let data of timeList" [ngValue]="data.value">{{data.text}}</option>
+                                      </select>
+                                    </div>
+                                    <!-- &nbsp;&nbsp;&nbsp;&nbsp; -->
+                                    <div *ngIf="user.timeSlots[i].starttime !== 'closed'" class="form-group col-md-2">
+                                      <select class="form-control" [(ngModel)]="user.timeSlots[i].starttimezone" name="{{i+50}}">
+                                        <option *ngFor="let itemdata of timeZoneList" [ngValue]="itemdata.value">{{itemdata.name}}</option>
+                                      </select>
+                                    </div>
+                                    <!-- <span *ngIf="user.timeSlots[i].starttime !== 'closed'">&nbsp;&nbsp;&nbsp;&nbsp;</span> -->
+                                    <div class="form-group col-md-2">
+                                      <!-- <select class="form-control">
+                                        <option value="-">-</option>
+                                      </select> -->
+                                      <label class="form-control no-border">-</label>
+                                    </div>
+                                    <!-- &nbsp;&nbsp;&nbsp;&nbsp; -->
+                                    <div class="form-group col-md-2" [ngClass]="{'col-md-4':user.timeSlots[i].endtime === 'closed'}">
+                                      <select class="form-control" [(ngModel)]="user.timeSlots[i].endtime" name="{{i+100}}" (change)="onChangeEndTime(user.timeSlots[i])">
+                                        <option *ngFor="let data of timeList" [ngValue]="data.value">{{data.text}}</option>
+                                      </select>
+                                    </div>
+                                    <!-- &nbsp;&nbsp;&nbsp;&nbsp; -->
+                                    <div *ngIf="user.timeSlots[i].endtime !== 'closed'" class="form-group col-md-2">
+                                      <select class="form-control" [(ngModel)]="user.timeSlots[i].endtimezone" name="{{i+150}}">
+                                        <option *ngFor="let itemdata of timeZoneList" [ngValue]="itemdata.value">{{itemdata.name}}</option>
+                                      </select>
+                                    </div>
+                                </div>
+                                <br>
+                              </div>
+                            </div>
+
+                          </div>
+                          <div class="form-actions right">
+                            <button type="button" class="btn btn-warning mr-1">
+                              <i class="ft-x"></i> Cancel
+                            </button>
+                            <button type="submit" class="btn btn-primary">
+                              <i class="fa fa-check-square-o"></i> Save
+                            </button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="tab-pane" id="profilePictureTab" aria-labelledby="baseVerticalLeft1-tab2">
+                  
+                    
+                      <div class="card" >
+                        
+                          <div class="card-body">
+                            <img *ngIf="userProfilePic != null" id="profile-pic" src="{{ userProfilePic }}" class="m-t-10 m-b-10" alt="Card image">
+                            <img *ngIf="userProfilePic == null" id="profile-pic" src="assets/app/images/logo/stack-80x80.png" class="m-t-10 m-b-10" alt="Card image">
+                            <form class="form form-horizontal" #profilePicForm="ngForm" (ngSubmit)="updateProfilePicture(profilePicForm)">
+
+                                <div class="form-group">
+                                  <label>Change Picture</label>
+                                  <label class="file center-block">
+                                    <input type="file" id="file" name="file" accept="image/*" 
+                                    ngModel #fileErr="ngModel" (change)="onChangefile($event)">
+                                    <div *ngIf="fileErr.errors">
+                                      <span class="help-block error" [hidden]="!fileErr.errors.required"> * File is Required </span>
+                                      </div>
+                                    <span class="file-custom"></span>
+                                  </label>
+                                </div>
+        
+                                
+                                <div class="form-actions right">
+                                    <button type="button" class="btn btn-warning mr-1" (click)="onClickCancel()">
+                                      <i class="ft-x"></i> Cancel
+                                    </button>
+                                    <button type="submit" class="btn btn-primary">
+                                      <i class="fa fa-check-square-o"></i> Update
+                                    </button>
+                                  </div>
+                              </form>
+                          </div>
+                          <!-- <div class="card-body">
+                            <h4 id="profile-pic-title" class="card-title"></h4>
+                          </div> -->
+
+                          
+                        
+                      </div>
+
+                      
+                    
+
+                </div>
+
+                <div class="tab-pane" *ngIf="userRole=='0'"  id="subscriptionStatusTab" aria-labelledby="baseVerticalLeft1-tab3">
+                  
+                  <div *ngIf="user.userStatus == 'active'; else subscriptionNotActive" class="card p-1 text-white bg-success">
+                    <div class="card-content">
+                      <div class="card-body">
+                        <div class="float-left">
+                          <p class="white mb-0">
+                            <strong>Subscription is Active</strong>
+                          </p>
+                          <!-- <p class="card-title">.bg-blue</p> -->
+                        </div>
+                        <div class="float-right">
+                          <!-- <p class="card-title">
+                            <small class="float-right">#2196F3</small>
+                          </p> -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="card-content" *ngIf="user.userStatus == 'active' && userRole=='0'">
+                    <div class="card-body">
+                      <div class="float-left">
+                        <button type="button" (click)="cancelSubscription()"
+                        class="btn btn-secondary square btn-min-width mr-1 mb-1">
+                          Cancel Subscription
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="card-content" *ngIf="user.userStatus == 'active' && (userRole=='1' || userRole=='2')">
+                      <div class="card-body">
+                        <div class="float-left">
+                          <button type="button" class="btn btn-secondary square btn-min-width mr-1 mb-1">
+                            Subscription
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                  <ng-template #subscriptionNotActive>
+                    <div class="card p-1 text-white bg-danger bg-darken-4 ">
+                      <div class="card-content">
+                        <div class="card-body">
+                          <div class="float-left">
+                            <p class="white mb-0">
+                              <strong>Subscription is not Active</strong>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card">
+                      <div class="card-content">
+                        <div class="card-body">
+                          <div class="float-left">
+                            <button type="button" (click)="openHandler()" 
+                            class="btn btn-secondary square btn-min-width mr-1 mb-1">
+                              Subscribe for $49.99/month
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </ng-template>
+                
+                </div>
+
+              </div>
+                
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- Vertical Tabs end -->
+</div>

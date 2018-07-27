@@ -1,0 +1,149 @@
+<div class="content-header row">
+  <div class="content-header-left col-md-7 col-12 mb-1">
+  </div>
+  <div class="content-header-right breadcrumbs-right breadcrumbs-top col-md-5 col-12">
+    <div class="breadcrumb-wrapper col-12">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a routerLink="/dashboard">Home</a>
+        </li>
+        <li class="breadcrumb-item active">
+          <a href="#">Sales Rep. List</a>
+        </li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<div class="content-body">
+  <!-- Basic form layout section start -->
+  <section id="horizontal-form-layouts">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-actions">
+          <button type="button" class="btn btn-primary" (click)="printPdf()">
+            <i class="fa fa-print"></i> Print
+          </button>
+          <button type="button" class="btn btn-primary" (click)="changePdf()">
+            <i class="fa fa-file-pdf-o"></i> PDF
+          </button>
+        </div>
+      </div>
+      <br>
+      <br>
+      <br>
+      <!-- <div class="col-sm-12">
+        <form class="form-inline">
+          <div class="col-sm-3 form-group">
+            <label>Start Date</label>
+            <my-date-picker name="startDate" [options]="myDatePickerOptions" [(ngModel)]="model.startDate" required></my-date-picker>
+          </div>
+          <div class="col-sm-3  form-group">
+            <label>End Date</label>
+            <my-date-picker name="endDate" [options]="myDatePickerOptions" [(ngModel)]="model.endDate" required></my-date-picker>
+          </div>
+          <div class="col-sm-3  form-group">
+            <button type="button" class="btn btn-primary submit-button" (click)="dateFilter()">Submit</button>
+          </div>
+        </form>
+      </div> -->
+      <div class="col-sm-12">
+        <form class="form-inline">
+          <div class="col-sm-12 form-group">
+            <button type="button" class="btn btn-primary submit-button" [ngClass]="{'active': selectedType === 'Weekly'}" (click)="dateFilter('Weekly')">Weekly</button>
+            <!-- <label>Start Date</label>
+              <my-date-picker name="startDate" [options]="myDatePickerOptions" [(ngModel)]="model.startDate" required></my-date-picker> -->
+            <button type="button" class="btn btn-primary submit-button mt-15" [ngClass]="{'active': selectedType === 'Biweekly'}" (click)="dateFilter('Biweekly')">Biweekly</button>
+            <!-- <label>End Date</label>
+              <my-date-picker name="endDate" [options]="myDatePickerOptions" [(ngModel)]="model.endDate" required></my-date-picker> -->
+            <button type="button" class="btn btn-primary submit-button  mt-15" [ngClass]="{'active': selectedType === 'Monthly'}" (click)="dateFilter('Monthly')">Monthly</button>
+            <!-- <button type="button" class="btn btn-primary submit-button" (click)="dateFilter()">Submit</button> -->
+          </div>
+        </form>
+      </div>
+    </div>
+    <br>
+    <br>
+    <div class="row col-md-12" id="element-to-print">
+      <div class="col-md-12">
+        <div class="row" *ngIf="this.salesRep">
+          <div class="col-md-6">
+            <h4>COMMISSION REMUNERATION </h4>
+            <br>
+            <a href="#">{{this.salesRep.email}}</a>
+            <br>
+            <a href="#">{{model.loycardherf}}</a>
+          </div>
+          <div class="col-md-6">
+            <div class="row">
+              <h6 class="col-md-12">Attention : {{this.salesRep.name}}</h6>
+              <h6 class="col-md-12">Title : {{model.title}}</h6>
+            </div>
+            <br>
+            <div class="row" *ngIf="this.salesRep && this.salesRep.country != ''">
+              <h6 class="col-md-12">{{this.salesRep.country}}</h6>
+            </div>
+            <br>
+            <div class="row">
+              <h6 class="col-md-12">Pay Period : {{model.startDate }} - {{model.endDate}}</h6>
+              <h6 class="col-md-12">Terms : {{selectedType}}</h6>
+              <h6 class="col-md-12">Project : {{model.project}}</h6>
+            </div>
+          </div>
+        </div>
+        <br>
+        <br>
+        <div class="row" *ngIf="this.salesRep">
+          <div class="table-responsive" id="table">
+            <table class="table dash">
+              <thead class="theadColor">
+                <tr>
+                  <th class="solid">Active Vendors</th>
+                  <th class="solid">New Account</th>
+                  <th class="solid">{{this.salesRep.percentage}}%</th>
+                  <th class="solid">Total by Vendor </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let list of vendorList">
+                  <td class="dash">{{list.businessName}}</td>
+                  <td class="dash tdTextRight">{{list.newVendorAmount}}</td>
+                  <td class="dash tdTextRight">${{(list.percentageAmount).toFixed(2)}}</td>
+                  <td class="dash tdTextRight">${{(list.newVendorAmount + list.percentageAmount).toFixed(2)}}</td>
+                </tr>
+                <tr>
+                  <td class="dash tdFontBold">Total Active Vendor</td>
+                  <td class="dash"></td>
+                  <td class="dash"></td>
+                  <td class="dash tdTextRight tdFontBold">{{totalRecord.totalActiveVendors}}</td>
+                </tr>
+                <tr>
+                  <td class="dash"></td>
+                  <td class="dash tdFontBold">Total</td>
+                  <td class="dash"></td>
+                  <td class="dash tdTextRight tdFontBold">${{(totalRecord.total).toFixed(2)}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <h6 class="col-md-12">
+            Thank you for your business. It’s a pleasure to work with you !
+          </h6>
+          <br>
+          <br>
+          <h6 class="col-md-12">
+            Sincerely yours,
+          </h6>
+          <br>
+          <h6 class="col-md-12">
+            Loycard.Co management
+          </h6>
+        </div>
+        <br>
+      </div>
+    </div>
+  </section>
+</div>

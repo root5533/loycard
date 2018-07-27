@@ -1,0 +1,44 @@
+.form-control-position {
+    position: absolute;
+    top: 4px;
+    right: 0;
+    z-index: 2;
+    display: block;
+    width: 2.5rem;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    text-align: center;
+}
+.has-icon-left .form-control-position {
+    right: auto;
+    left: inherit;
+}
+.position-relative .form-control.form-control-lg ~ .form-control-position {
+    top: 10px;
+}
+.has-icon-left .form-control {
+    padding-right: 1rem;
+    padding-left: calc(2.75rem + 2px);
+}
+.form-simple input[type="text"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+@media only screen and (max-width: 480px) {
+    div.p-1 img {
+        width: 80% !important;
+    }
+}
+
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px)  {
+    .col-md-4 {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 70.33333%;
+        /* flex: 0 0 50.33333%; */
+        max-width: 70%;
+    }
+}

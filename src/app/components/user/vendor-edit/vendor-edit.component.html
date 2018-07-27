@@ -1,0 +1,234 @@
+<div class="content-header row">
+  <div class="content-header-left col-md-6 col-12 mb-1">
+    <h3 class="content-header-title">Vendor Edit</h3>
+  </div>
+  <div class="content-header-right breadcrumbs-right breadcrumbs-top col-md-6 col-12">
+    <div class="breadcrumb-wrapper col-12">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a routerLink="/dashboard">Home</a>
+        </li>
+        <li class="breadcrumb-item">
+          <a routerLink="/vendor-list">Vendor List</a>
+        </li>
+        <li class="breadcrumb-item active">
+          <a href="#">Vendor Edit</a>
+        </li>
+      </ol>
+    </div>
+  </div>
+</div>
+<div class="content-body">
+  <!-- Basic form layout section start -->
+  <section id="horizontal-form-layouts">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-content collpase show">
+            <div class="card-body">
+              <form class="form form-horizontal" #vendorupdateForm="ngForm" (ngSubmit)="updateVendor(vendorupdateForm)">
+                <div class="form-body">
+                  <h4 class="form-section">
+                    <i class="ft-user"></i> Personal Info</h4>
+                  <div class="form-group row">
+                    <label class="col-md-3 label-control">Name *</label>
+                    <div class="col-md-9">
+                      <input type="text" class="form-control" disabled #nameErr="ngModel" [(ngModel)]="vendor.name" placeholder="Name" name="name"
+                        pattern="[a-zA-Z ]*" required>
+                      <div *ngIf="nameErr.errors && (nameErr.dirty || nameErr.touched)">
+                        <span class="help-block error" [hidden]="!nameErr.errors.required"> * Name is Required </span>
+                        <span class="help-block error" [hidden]="!nameErr.errors.pattern"> Name should contain letters and whitespace </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-3 label-control">E-mail *</label>
+                    <div class="col-md-9">
+                      <input type="email" class="form-control" disabled #emailErr="ngModel" [(ngModel)]="vendor.email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                        placeholder="E-mail" name="email" required>
+                      <div *ngIf="emailErr.errors && (emailErr.dirty || emailErr.touched)">
+                        <span class="help-block error" [hidden]="!emailErr.errors.required"> * Email is Required </span>
+                        <span class="help-block error" [hidden]="!emailErr.errors.pattern"> Email is Invalid </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-3 label-control">Contact Number *</label>
+                    <div class="col-md-9">
+                      <input type="text" class="form-control" #contactnoErr="ngModel" [(ngModel)]="vendor.contactno" placeholder="Contact no" name="contactno"
+                        required>
+                      <div *ngIf="contactnoErr.errors && (contactnoErr.dirty || contactnoErr.touched)">
+                        <span class="help-block error" [hidden]="!contactnoErr.errors.required"> * Contact no is Required </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <h4 class="form-section">
+                    <i class="icon-clipboard4"></i> Business Info</h4>
+
+                  <div class="form-group row">
+                    <label class="col-md-3 label-control">Business Name *</label>
+                    <div class="col-md-9">
+                      <input type="text" class="form-control" #businessname="ngModel" [(ngModel)]="vendor.businessName" required placeholder="Business Name"
+                        name="businessName">
+                      <div *ngIf="businessname.errors && (businessname.dirty || businessname.touched)">
+                        <span class="help-block error" [hidden]="!businessname.errors.required"> * Business Name is Required </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-3 label-control">Business Address *</label>
+                    <div class="col-md-9">
+
+                      <input type="text" id="businessAddress" class="form-control" #businessaddress="ngModel" [(ngModel)]="vendor.businessAddress"
+                        (input)="onBusinessAddressChange($event)" placeholder="Business Address / Street Number" name="businessAddress"
+                        required>
+
+                      <div *ngIf="businessaddress.errors && (businessaddress.dirty || businessaddress.touched)">
+                        <span class="help-block error" [hidden]="!businessaddress.errors.required"> * Address is Required </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label class="col-md-3 label-control">Apartment/Suite Number </label>
+                    <div class="col-md-9">
+                      <input type="text" id="route" class="form-control" #apt="ngModel" [(ngModel)]="vendor.apt" placeholder="Apartment / Suite Number"
+                        name="apt">
+
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-3 label-control">City *</label>
+                    <div class="col-md-9">
+                      <input type="text" id="locality" class="form-control" #city="ngModel" [(ngModel)]="vendor.city" placeholder="City" name="city">
+                      <div *ngIf="city.errors && (city.dirty || city.touched)">
+                        <span class="help-block error" [hidden]="!city.errors.required"> * City is Required </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-3 label-control">State *</label>
+                    <div class="col-md-9">
+                      <input type="text" id="administrative_area_level_1" class="form-control" #state="ngModel" [(ngModel)]="vendor.state" placeholder="State"
+                        name="state">
+                      <div *ngIf="state.errors && (state.dirty || state.touched)">
+                        <span class="help-block error" [hidden]="!state.errors.required"> * State is Required </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-3 label-control">Zipcode *</label>
+                    <div class="col-md-9">
+                      <input type="text" id="postal_code" class="form-control" #zipcode="ngModel" [(ngModel)]="vendor.zipcode" placeholder="Zipcode"
+                        name="zipcode">
+                      <div *ngIf="zipcode.errors && (zipcode.dirty || zipcode.touched)">
+                        <span class="help-block error" [hidden]="!zipcode.errors.required"> * Zipcode is Required </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label class="col-md-3 label-control">
+                      <i class="fa fa-facebook-square socialIconSize"></i>
+                    </label>
+                    <div class="col-md-9">
+                      <input type="text" class="form-control" #facebookErr="ngModel" [(ngModel)]="vendor.facebook" ngModel name="facebook">
+                      <div *ngIf="facebookErr.errors && (facebookErr.dirty || facebookErr.touched)">
+                        <span class="help-block error" [hidden]="!facebookErr.errors.required"> * Facebook is Required </span>
+                        <!-- <span class="help-block error" [hidden]="!facebookErr.errors.pattern"> Facebook Url is Invalid</span> -->
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-3 label-control">
+                      <i class="fa fa-twitter socialIconSize"></i>
+                    </label>
+                    <div class="col-md-9">
+                      <input type="text" class="form-control" #twitterErr="ngModel" [(ngModel)]="vendor.twitter" ngModel name="twitter">
+                      <div *ngIf="twitterErr.errors && (twitterErr.dirty || twitterErr.touched)">
+                        <span class="help-block error" [hidden]="!twitterErr.errors.required"> * Twitter is Required </span>
+                        <!-- <span class="help-block error" [hidden]="!twitterErr.errors.pattern"> Twitter Url is Invalid</span> -->
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-3 label-control">
+                      <i class="fa fa-google-plus socialIconSize"></i>
+                    </label>
+                    <div class="col-md-9">
+                      <input type="text" class="form-control" #googlePlusErr="ngModel" ngModel [(ngModel)]="vendor.googlePlus" name="googlePlus">
+                      <div *ngIf="googlePlusErr.errors && (googlePlusErr.dirty || googlePlusErr.touched)">
+                        <span class="help-block error" [hidden]="!googlePlusErr.errors.required"> * Google-Plus is Required </span>
+                        <!-- <span class="help-block error" [hidden]="!googlePlusErr.errors.pattern"> Google-Plus Url is Invalid</span> -->
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-3 label-control">Web site *</label>
+                    <div class="col-md-9">
+                      <input type="text" class="form-control" #websiteErr="ngModel" ngModel [(ngModel)]="vendor.website" name="website">
+                      <div *ngIf="websiteErr.errors && (websiteErr.dirty || websiteErr.touched)">
+                        <span class="help-block error" [hidden]="!websiteErr.errors.required"> * Web site is Required </span>
+                        <!-- <span class="help-block error" [hidden]="!websiteErr.errors.pattern"> Web site Url is Invalid</span> -->
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-3 label-control">Business Hour *</label>
+                    <div class="col-md-9" *ngIf="vendor?.timeSlots">
+                      <div class="row" *ngFor="let item of timeSlotList; let i=index;">
+                        <div class="form-group col-md-2">
+                          <label>{{item.label}}</label>
+                        </div>
+                        <div class="form-group col-md-2" [ngClass]="{'col-md-4':vendor?.timeSlots[i].starttime === 'closed'}">
+                          <select class="form-control" [(ngModel)]="vendor?.timeSlots[i].starttime" name="{{i}}" (change)="onChangeStartTime(vendor?.timeSlots[i])">
+                            <option *ngFor="let data of timeList" [ngValue]="data.value">{{data.text}}</option>
+                          </select>
+                        </div>
+                        <div *ngIf="vendor.timeSlots[i].starttime !== 'closed'" class="form-group col-md-2">
+                          <select class="form-control" [(ngModel)]="vendor?.timeSlots[i].starttimezone" name="{{i+100}}">
+                            <option *ngFor="let itemdata of timeZoneList" [ngValue]="itemdata.value">{{itemdata.name}}</option>
+                          </select>
+                        </div>
+                        <!-- <span *ngIf="vendor?.timeSlots[i].starttime !== 'closed'"></span> -->
+                        <div class="form-group col-md-1">
+                          <!-- <select class="form-control">
+                              <option value="-">-</option>
+                            </select> -->
+                          <label class="form-control no-border">-</label>
+                        </div>
+                        <div class="form-group col-md-2" [ngClass]="{'col-md-4':vendor?.timeSlots[i].endtime === 'closed'}">
+                          <select class="form-control" [(ngModel)]="vendor?.timeSlots[i].endtime" name="{{i+50}}" (change)="onChangeEndTime(vendor?.timeSlots[i])">
+                            <option *ngFor="let data of timeList" [ngValue]="data.value">{{data.text}}</option>
+                          </select>
+                        </div>
+                        <div *ngIf="vendor?.timeSlots[i].endtime !== 'closed'" class="form-group col-md-2">
+                          <select class="form-control" [(ngModel)]="vendor?.timeSlots[i].endtimezone" name="{{i+150}}">
+                            <option *ngFor="let itemdata of timeZoneList" [ngValue]="itemdata.value">{{itemdata.name}}</option>
+                          </select>
+                        </div>
+                      </div>
+                      <br>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="form-actions right">
+                  <button type="button" class="btn btn-warning mr-1">
+                    <i class="ft-x"></i> Cancel
+                  </button>
+                  <button type="submit" [disabled]="!vendorupdateForm.form.valid" class="btn btn-primary">
+                    <i class="fa fa-check-square-o"></i> Update
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+  <!-- // Basic form layout section end -->
+</div>

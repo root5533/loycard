@@ -1,0 +1,26 @@
+.card-body{
+    padding-top: 0 !important;
+}
+.nav-vertical .nav-left.nav-tabs{
+    padding-top: 20px !important; 
+}
+.form-control.ng-touched.ng-invalid {
+    border: 2px solid red !important;
+}
+img#profile-pic {
+    width: 227px;
+    height: 227px;
+}
+.nav.nav-tabs.nav-top-border .nav-item a{
+    color: #0A1253 !important;
+}
+
+.nav.nav-tabs.nav-top-border .nav-item a.nav-link.active{
+    border-top: 3px solid #0A1253;
+}
+.no-border {
+    border: 0px;
+}
+.drop-down-width {
+    width:185px
+}

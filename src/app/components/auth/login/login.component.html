@@ -1,0 +1,69 @@
+<div class="app-content content">
+  <div class="content-wrapper">
+    <div class="content-header row">
+    </div>
+    <div class="content-body">
+      <section class="row flexbox-container">
+        <div class="col-12 d-flex align-items-center justify-content-center">
+          <div class="col-12 col-md-4 box-shadow-2 p-0">
+            <div class="card border-grey border-lighten-3 m-0">
+              <div class="card-header border-0">
+                <div class="card-title text-center">
+                  <div class="p-1">
+                    <img src="assets/app/images/logo23.png" alt="branding logo">
+                  </div>
+                </div>
+                <h6 class="card-subtitle line-on-side text-muted text-center font-small-3 pt-2">
+                  <span>Login with Loycard</span>
+                </h6>
+              </div>
+              <div class="card-content">
+                <div class="card-body">
+                  <div *ngIf="hasError" class="alert alert-danger mb-2" role="alert">
+                    <strong>Invalid Email or Password</strong>
+                  </div>
+                  <form #loginForm="ngForm" (ngSubmit)="doLogin(loginForm)"
+                   class="form-horizontal form-simple"  novalidate>
+                    <fieldset class="form-group position-relative has-icon-left mb-0">
+                      <input type="email" name="email" #emailErr="ngModel" ngModel 
+                      class="form-control form-control-lg input-lg" 
+                      placeholder="Your Email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required>
+                      <div class="form-control-position">
+                        <i class="ft-mail"></i>
+                      </div>
+                      <div *ngIf="emailErr.errors && (emailErr.dirty || emailErr.touched)">
+                        <span class="help-block error" [hidden]="!emailErr.errors.required"> * Email is Required </span>
+                        <span class="help-block error" [hidden]="!emailErr.errors.pattern"> Email is Invalid </span>
+                      </div>
+                    </fieldset>
+                    <fieldset class="form-group position-relative has-icon-left">
+                      <input type="password" name="password" class="form-control form-control-lg input-lg" 
+                      placeholder="Enter Password" #passwordErr="ngModel" ngModel minlength="6" required>
+                      <div class="form-control-position">
+                        <i class="fa fa-key"></i>
+                      </div>
+                      <div *ngIf="passwordErr.errors && (passwordErr.dirty || passwordErr.touched)">
+                        <span class="help-block error" [hidden]="!passwordErr.errors.required"> * Password is Required </span>
+                        <span class="help-block error" [hidden]="!passwordErr.errors.minlength"> Password should be 6 characters minimum </span>
+                      </div>
+                    </fieldset>
+                    <div class="form-group row">
+                      <div class="col-md-6 col-sm-6 col-12 text-center text-md-left">
+                        <fieldset>
+                          <input type="checkbox" id="remember-me" class="chk-remember">
+                          <label for="remember-me"> Remember Me</label>
+                        </fieldset>
+                      </div>
+                      <div class="col-md-6 col-sm-6 col-12 text-center text-md-right"><a href="recover-password.html" class="card-link">Forgot Password?</a></div>
+                    </div>
+                    <button type="submit" [disabled]="!loginForm.form.valid" class="btn loycard-color btn-lg btn-block color-wh"><i class="ft-unlock"></i> Login</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>

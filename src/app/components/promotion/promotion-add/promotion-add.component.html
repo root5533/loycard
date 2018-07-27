@@ -1,0 +1,84 @@
+<div class="content-header row">
+    <div class="content-header-left col-md-6 col-12 mb-1">
+      <h3 class="content-header-title">Add Promotion</h3>
+    </div>
+    <div class="content-header-right breadcrumbs-right breadcrumbs-top col-md-6 col-12">
+      <div class="breadcrumb-wrapper col-12">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a routerLink="/dashboard">Home</a>
+          </li>
+          <li class="breadcrumb-item"><a href="#">Promotion</a>
+          </li>
+          <li class="breadcrumb-item active"><a href="#">Add Promotion</a>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+  <div class="content-body">
+    <!-- Basic form layout section start -->
+    <section id="horizontal-form-layouts">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-content collpase show">
+              <div class="card-body">
+                <div *ngIf="inserted" class="alert alert-primary mb-2" role="alert">
+                  <strong>Promotion Added</strong>
+                </div>
+                <form class="form form-horizontal" #promotionaddForm="ngForm" (ngSubmit)="addPromotion(promotionaddForm)">
+                  <div class="form-body">
+                    <h4 class="form-section"><i class="ft-user"></i> Promotion Info</h4>
+                    <div class="form-group row">
+                      <label class="col-md-3 label-control">Promo Title *</label>
+                      <div class="col-md-9">
+                        <input type="text"class="form-control" #titleErr="ngModel" 
+                        ngModel placeholder="Promo Title" name="title" required>
+                        <div *ngIf="titleErr.errors && (titleErr.dirty || titleErr.touched)">
+                          <span class="help-block error" [hidden]="!titleErr.errors.required"> * Title is Required </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-md-3 label-control">Promo Description *</label>
+                      <div class="col-md-9">
+                        <input type="text" class="form-control" #descErr="ngModel" ngModel
+                        placeholder="Promo Description" name="description" required>
+                        <div *ngIf="descErr.errors && (descErr.dirty || descErr.touched)">
+                          <span class="help-block error" [hidden]="!descErr.errors.required"> * Promo Description is Required </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-md-3 label-control">Expired Date *</label>
+                      <div class="col-md-9">
+                        <input type="text" class="form-control" #expiredateErr="ngModel" 
+                        ngModel placeholder="Expire Date: DD/MM/YYYY" name="expiryDate" required>
+                        <div *ngIf="expiredateErr.errors && (expiredateErr.dirty || expiredateErr.touched)">
+                          <span class="help-block error" [hidden]="!expiredateErr.errors.required"> * Expire date is Required </span>
+                        </div>
+                      </div>
+                    </div>
+                  
+                    
+                  </div>
+                  <div class="form-actions right">
+                    <button type="button" class="btn btn-warning mr-1">
+                      <i class="ft-x"></i> Cancel
+                    </button>
+                    <button type="submit" class="btn btn-primary" [disabled]="!promotionaddForm.form.valid">
+                      <i class="fa fa-check-square-o"></i> Save
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+    </section>
+    <!-- // Basic form layout section end -->
+  </div>
+  
+  

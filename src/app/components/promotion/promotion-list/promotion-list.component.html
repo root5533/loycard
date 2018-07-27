@@ -1,0 +1,76 @@
+<div class="content-header row">
+  <div class="content-header-left col-md-6 col-12 mb-1">
+    <h3 class="content-header-title">Promotion List</h3>
+  </div>
+  <div class="content-header-right breadcrumbs-right breadcrumbs-top col-md-6 col-12">
+    <div class="breadcrumb-wrapper col-12">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/dashboard">Home</a>
+        </li>
+        <li class="breadcrumb-item active"><a href="#">Promotion List</a>
+        </li>
+      </ol>
+    </div>
+  </div>
+</div>
+<div class="content-body">
+
+  <!-- Responsive tables start -->
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <!-- <div class="card-header">
+          <h4 class="card-title">Responsive tables</h4>
+        </div> -->
+        <div class="card-content collapse show">
+          <div class="table-responsive">
+            <div class="bd-example">
+              <table class="table table-responsive">
+                <thead class="hidden-sm">
+                  <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Expiry Date</th>
+                    <th scope="col">Creation Date</th>
+                    
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let p of promotions">
+                      <td class="hidden-md">
+                          <tr>
+                            <td class="custom-td"><b>Title</b></td>
+                            <td class="custom-td">{{ p.title  }}</td>
+                          </tr>
+                          <tr>
+                            <td class="custom-td"><b>Description</b></td>
+                            <td class="custom-td">{{ p.description }}</td>
+                          </tr>
+                          <tr>
+                            <td class="custom-td"><b>Expiry Date</b></td>
+                            <td class="custom-td">{{ p.expiryDate }}</td>
+                          </tr>
+                          <tr>
+                            <td class="custom-td"><b>Creation Date</b></td>
+                            <td class="custom-td">{{ p.creationDate }}</td>
+                          </tr>
+                          <!-- <span class="hs-135"><b> </b></span>  <br>
+                          <span class="hs-135"><b> </b></span> <br>
+                          <span class="hs-135"><b> </b></span>  <br>
+                          <span class="hs-135"><b>: </b></span>  <br> -->
+                        </td>
+                    <td class="hidden-sm">{{ p.title }}</td>
+                    <td class="hidden-sm">{{ p.description }}</td>
+                    <td class="hidden-sm">{{ p.expiryDate }}</td>
+                    <td class="hidden-sm">{{ p.creationDate }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Responsive tables end -->
+</div>

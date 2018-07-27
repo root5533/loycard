@@ -1,0 +1,101 @@
+span.error {
+    color: red;
+}
+.btn-warning{
+    background-color: #b90a0a !important;
+}
+.btn-primary{
+    background-color: #0d5d97 !important;
+}
+.loycard-color{
+    border-color: #0d5d97 !important;
+    background-color: #0d5d97 !important;
+}
+a.card-link{
+    color: #0d5d97 !important;
+}
+a.card-link:hover{
+    color: #0d5d97 !important;
+}
+.color-wh{
+ color: white !important;
+}
+.brand-text{
+    color: #1b2942 !important;
+}
+ui.navigation-main li a{
+    color: #000 !important;
+}
+
+ui.navigation-main li.active a{
+    color: #1b2942 !important;
+}
+.main-menu.menu-light .navigation > li ul .active > a{
+    color: #1b2942 !important;
+}
+/* @media only screen and (max-width: 720px) {
+    .p-1 img{
+        width: 100%;
+    } 
+}
+@media only screen and (max-width: 1024px) {
+    .p-1 img{
+        width: 100%;
+    } 
+} */
+/*  */
+.breadcrumb li a{
+    color: #1b2942 !important;
+}
+.breadcrumb li.active a{
+    font-weight: bold;
+}
+/* h3.content-header-title{
+    margin: 10px 0px 0px 25px;
+}     */
+.display_true{
+    display: block;
+}
+.display_false{
+    display: none;
+}
+.alert-primary{
+    border-color: #0d5d97 !important;
+    background-color: #0d5d97 !important;
+    color: #ffffff !important; 
+}
+h2.brand-text{
+    position: absolute;
+    top: 18px;
+}
+
+.main-menu.menu-light .navigation > li.active > a{
+    color: #0d5d97 !important;
+}
+.btn-primary:hover, .btn-primary{
+    border-color: #0d5d97 !important;
+    background-color: #0d5d97 !important;
+}
+.btn-warning:focus, .btn-warning:active, .btn-warning:hover{
+    border-color: #e41616 !important;
+    background-color: #e41616 !important;
+}
+.display_true{
+    display: true !important;
+}
+.display_false{
+    display: false !important;
+}
+
+.nav-vertical .nav-left.nav-tabs.nav-border-left li.nav-item a.nav-link.active{
+    border-left: 3px solid #747aca !important;
+}
+.nav-vertical .nav-left.nav-tabs li.nav-item a.nav-link{
+    border-right: 1px solid rgb(255, 255, 255) !important;
+}
+.nav-vertical .nav-left.nav-tabs.nav-border-left li.nav-item a.nav-link{
+    color: #747aca !important;
+}
+.m-t-10{
+    margin-top: 10px !important;
+}

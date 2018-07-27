@@ -1,0 +1,133 @@
+<div class="content-header row">
+  <div class="content-header-left col-md-6 col-12 mb-1">
+    <h3 class="content-header-title">Add Sales Representative</h3>
+  </div>
+  <div class="content-header-right breadcrumbs-right breadcrumbs-top col-md-6 col-12">
+    <div class="breadcrumb-wrapper col-12">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/dashboard">Home</a>
+        </li>
+        <li class="breadcrumb-item"><a href="#">Users</a>
+        </li>
+        <li class="breadcrumb-item active"><a href="#">Add Sales Rep.</a>
+        </li>
+      </ol>
+    </div>
+  </div>
+</div>
+<div class="content-body">
+  <!-- Basic form layout section start -->
+  <section id="horizontal-form-layouts">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-content collpase show">
+            <div class="card-body">
+              <div *ngIf="inserted" class="alert alert-primary mb-2" role="alert">
+                <strong>Sales Representative Added</strong>
+              </div>
+              <form class="form form-horizontal" #salesrepaddForm="ngForm" (ngSubmit)="addSalesRep(salesrepaddForm)">
+                <div class="form-body">
+                  <h4 class="form-section"><i class="ft-user"></i> Personal Info</h4>
+                  <div class="form-group row">
+                    <label class="col-md-3 label-control">Name *</label>
+                    <div class="col-md-9">
+                      <input type="text"class="form-control" #nameErr="ngModel" 
+                      ngModel placeholder="Name" name="name" pattern="[a-zA-Z ]*" required>
+                      <div *ngIf="nameErr.errors && (nameErr.dirty || nameErr.touched)">
+                        <span class="help-block error" [hidden]="!nameErr.errors.required"> * Name is Required </span>
+                        <span class="help-block error" [hidden]="!nameErr.errors.pattern"> Name should contain letters and whitespace </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-3 label-control">E-mail *</label>
+                    <div class="col-md-9">
+                      <input type="email" class="form-control" #emailErr="ngModel" ngModel
+                      pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" placeholder="E-mail" name="email" required>
+                      <div *ngIf="emailErr.errors && (emailErr.dirty || emailErr.touched)">
+                        <span class="help-block error" [hidden]="!emailErr.errors.required"> * Email is Required </span>
+                        <span class="help-block error" [hidden]="!emailErr.errors.pattern"> Email is Invalid </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-3 label-control">Contact Number *</label>
+                    <div class="col-md-9">
+                      <input type="text" class="form-control" #contactnoErr="ngModel" 
+                      ngModel placeholder="Contact no" name="contactno" required>
+                      <div *ngIf="contactnoErr.errors && (contactnoErr.dirty || contactnoErr.touched)">
+                        <span class="help-block error" [hidden]="!contactnoErr.errors.required"> * Contact no is Required </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-3 label-control">Password *</label>
+                    <div class="col-md-9">
+                      <input type="password" class="form-control" #password="ngModel" 
+                      ngModel minlength="6" placeholder="Password" validateEqual="confirmpassword" reverse="true" name="password" required>
+                      <div *ngIf="password.errors && (password.dirty || password.touched)">
+                        <span class="help-block error" [hidden]="!password.errors.required"> * Password is Required </span>
+                        <span class="help-block error" [hidden]="!password.errors.minlength"> Password should be 6 characters minimum </span>
+                        <br>
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-3 label-control">Confirm Password *</label>
+                    <div class="col-md-9">
+                      <input type="password" class="form-control" 
+                      #confirmpassword="ngModel" ngModel minlength="6" 
+                      placeholder="Confirm Password" validateEqual="password" reverse="false" name="confirmpassword">
+                      <div *ngIf="confirmpassword.errors && (confirmpassword.dirty || confirmpassword.touched)">
+                        <span class="help-block error" [hidden]="!confirmpassword.errors.required"> * Password is Required </span>
+                        <span class="help-block error" [hidden]="!confirmpassword.errors.minlength"> Password should be 6 characters minimum </span>
+                        <br>
+                        <span class="help-block error" [hidden]="confirmpassword.valid"> Password Mismatch </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label class="col-md-3 label-control">Sign Date *</label>
+                    <div class="col-md-9">
+                      <input type="date" class="form-control" #signdate="ngModel" 
+                      ngModel placeholder="Sign Date" name="signdate" required>
+                      <div *ngIf="signdate.errors && (signdate.dirty || signdate.touched)">
+                        <span class="help-block error" [hidden]="!signdate.errors.required"> * Sign Date is Required </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label class="col-md-3 label-control">Country *</label>
+                    <div class="col-md-9">
+                      <input type="text" class="form-control" #country="ngModel" 
+                      ngModel placeholder="Country" name="country" required id="country" (input)="onCountryChange($event)">
+                      <div *ngIf="country.errors && (country.dirty || country.touched)">
+                        <span class="help-block error" [hidden]="!country.errors.required"> * Country is Required </span>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="form-actions right">
+                  <button type="button" class="btn btn-warning mr-1">
+                    <i class="ft-x"></i> Cancel
+                  </button>
+                  <button type="submit" class="btn btn-primary" [disabled]="!salesrepaddForm.form.valid">
+                    <i class="fa fa-check-square-o"></i> Save
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+  <!-- // Basic form layout section end -->
+</div>
+

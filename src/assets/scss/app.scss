@@ -1,0 +1,45 @@
+// ================================================================================================
+// 	File Name: app.scss
+// 	Description: Mail application scss file.
+// 	----------------------------------------------------------------------------------------------
+// 	Item Name: Stack - Responsive Admin Theme
+// 	Version: 2.1
+// 	Author: PIXINVENT
+// 	Author URL: http://www.themeforest.net/user/pixinvent
+// ================================================================================================
+
+@import "bootstrap-extended";
+@import "colors";
+@import "components";
+@import "ng-vertical-menu-template-light";
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .jqx-button {
+    width: 30% !important;
+  }
+  .jqx-button span {
+    left: 0 !important;
+  }
+  select.form-control {
+    padding: 0;
+  }
+}
+
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : landscape) { 
+
+  .jqx-widget-content {
+    height: 530px !important;
+  }
+}
+
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : portrait) {  
+  .jqx-widget-content {
+    height: 850px !important;
+  }
+ }

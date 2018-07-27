@@ -1,0 +1,39 @@
+.dash {
+    border: 1px dashed #cccccc;
+    border-collapse: collapse
+ }
+
+ .solid{
+    border: 1px solid #fff;
+ }
+ .tdTextRight{
+    text-align: right;
+ }
+
+.theadColor{
+    background-color: #0d5d97;
+    color: white;
+}
+
+.tdFontBold{
+    font-weight: bold;
+
+}
+#element-to-print{
+    padding:20px;
+}
+
+.submit-button  {
+
+    &.mt-15 {
+        margin-left: 15px;
+    }
+
+    margin-top: 11px;
+    
+    &.active {
+        color: #fff !important;
+        background-color: #00B5B8 !important;
+        border-color: #00B5B8!important;
+    }
+}

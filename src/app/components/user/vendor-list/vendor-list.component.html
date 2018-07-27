@@ -1,0 +1,55 @@
+<div class="content-header row">
+  <div class="content-header-left col-md-6 col-12 mb-1">
+    <h3 class="content-header-title">Vendor List</h3>
+  </div>
+  <div class="content-header-right breadcrumbs-right breadcrumbs-top col-md-6 col-12">
+    <div class="breadcrumb-wrapper col-12">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a routerLink="/dashboard">Home</a>
+        </li>
+        <li class="breadcrumb-item active">
+          <a href="#">Vendor List</a>
+        </li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<div class="content-body">
+  <!-- Responsive tables start -->
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-content collapse show">
+          <div class="card-body card-dashboard collapse show">
+            <div id="vendor_list_grid">
+                <div #pagingInfoLog></div>
+              <jqxGrid 
+                  #myGrid
+                  [width]="'100%'"
+                  [height]="'100%'"
+                  [source]="dataAdapter"
+                  [showtoolbar]="true"
+                  [rendertoolbar]="rendertoolbar"
+                  [columns]="columns"
+                  [filterable]="true"
+                  [editable]="true"
+                  [showfilterrow]="true"
+                  [rowdetails]="true"
+                  [initrowdetails]="initrowdetails"
+                  [ready]="ready"
+                  [rowdetailstemplate]="rowdetailstemplate"
+                  (onCellbeginedit)="cellBeginEditEvent($event)"
+                  (onCellendedit)="cellEndEditEvent($event)"
+                  (onRowselect)="customersGridOnRowSelect($event)"
+                  >
+              </jqxGrid>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Responsive tables end -->
+</div>

@@ -1,0 +1,95 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "project": {
+    "name": "stack"
+  },
+  "apps": [
+    {
+      "root": "src",
+      "outDir": "dist",
+      "assets": [
+        "assets"
+      ],
+      "index": "index.html",
+      "main": "main.ts",
+      "polyfills": "polyfills.ts",
+      "test": "test.ts",
+      "tsconfig": "tsconfig.app.json",
+      "testTsconfig": "tsconfig.spec.json",
+      "prefix": "app",
+      "styles": [
+        "assets/app/vendors/css/ui/prism.min.css",
+        "assets/app/css/vendors.css",
+        "assets/app-assets/vendors/css/tables/datatable/datatables.min.css",
+        "assets/app-assets/vendors/css/tables/jsgrid/jsgrid.min.css",
+        "assets/app-assets/vendors/css/tables/jsgrid/jsgrid-theme.css",
+        "assets/app-assets/vendors/css/charts/morris.css",
+        "assets/scss/app.scss",
+        "assets/scss/core/menu/menu-types/vertical-menu.scss",
+        "assets/app-assets/css/core/colors/palette-gradient.css",
+        "assets/app-assets/fonts/simple-line-icons/style.min.css",
+        "assets/css/developer.css",
+        "assets/scss/style.scss",
+        "../node_modules/jqwidgets-scripts/jqwidgets/styles/jqx.base.css"
+      ],
+      "scripts": [
+        "assets/app/js/jquery.min.js",
+        "assets/app-assets/vendors/js/gallery/masonry/masonry.pkgd.min.js",
+        "assets/app-assets/vendors/js/gallery/photo-swipe/photoswipe.min.js",
+        "assets/app-assets/vendors/js/gallery/photo-swipe/photoswipe-ui-default.min.js",
+        "assets/app-assets/vendors/js/tables/datatable/datatables.min.js",
+        "assets/app-assets/js/scripts/tables/datatables/datatable-basic.js",
+        "assets/app-assets/vendors/js/tables/jsgrid/jsgrid.min.js",
+        "assets/app-assets/vendors/js/tables/jsgrid/griddata.js",
+        "assets/app-assets/js/scripts/tables/jsgrid/jsgrid.js",
+        "assets/app-assets/vendors/js/charts/gmaps.min.js",
+        "assets/app-assets/js/scripts/charts/gmaps/maps.js",
+        "assets/app-assets/vendors/js/charts/raphael-min.js",
+        "assets/app-assets/vendors/js/charts/morris.min.js",
+        "assets/app-assets/js/scripts/charts/chartjs/line/line.js",
+        "assets/app-assets/js/scripts/charts/morris/line.js",
+        "assets/app-assets/js/scripts/charts/morris/smooth-line.js",
+        "assets/app-assets/js/scripts/charts/morris/area.js",
+        "assets/app-assets/js/scripts/charts/morris/smooth-area.js",
+        "assets/app-assets/js/scripts/charts/morris/bar.js",
+        "assets/app-assets/js/scripts/charts/morris/donut.js",
+        "../node_modules/jspdf/dist/jspdf.min.js",
+        "../node_modules/jspdf-autotable/dist/jspdf.plugin.autotable.js",
+        "../node_modules/moment/min/moment.min.js"
+      ],
+      "environmentSource": "environments/environment.ts",
+      "environments": {
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
+      }
+    }
+  ],
+  "e2e": {
+    "protractor": {
+      "config": "./protractor.conf.js"
+    }
+  },
+  "lint": [
+    {
+      "project": "src/tsconfig.app.json",
+      "exclude": "**/node_modules/**/*"
+    },
+    {
+      "project": "src/tsconfig.spec.json",
+      "exclude": "**/node_modules/**/*"
+    },
+    {
+      "project": "e2e/tsconfig.e2e.json",
+      "exclude": "**/node_modules/**/*"
+    }
+  ],
+  "test": {
+    "karma": {
+      "config": "./karma.conf.js"
+    }
+  },
+  "defaults": {
+    "styleExt": "scss",
+    "component": {}
+  }
+}

@@ -1,0 +1,111 @@
+<!-- Sidebar Content starts -->
+<div id="stackMenu" (click)="toggleSideBarMenu()" data-scroll-to-active="true" class="main-menu menu-fixed menu-light menu-accordion">
+    <div class="main-menu-content">
+        <ul *ngIf="userRole !=null " id="main-menu-navigation" data-menu="menu-navigation" class="navigation navigation-main">
+            <li class="nav-item" routerLinkActive="active">
+                <a routerLink="/dashboard">
+                    <i class="ft-home"></i>
+                    <span class="menu-title">Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item has-sub open">
+                <a href="#">
+                    <i class="ft-users"></i>
+                    <span class="menu-title" *ngIf="userRole == '0'">Manage Users</span>
+                    <span class="menu-title" *ngIf="userRole == '1'">Manage Vendors</span>
+                    <span class="menu-title" *ngIf="userRole == '2'">Manage Customers</span>
+                </a>
+                <ul class="menu-content" (click)="onClickMenuContent()">
+                    <li *ngIf="userRole=='0'" routerLinkActive="active">
+                        <a routerLink="/salesrep-add" class="menu-item">
+                            <i class="icon-user-follow"></i>Add Sales Rep.</a>
+                    </li>
+                    <li *ngIf="userRole=='1'" routerLinkActive="active">
+                        <a routerLink="/vendor-add" class="menu-item">
+                            <i class="icon-user-follow"></i>Add Vendor</a>
+                    </li>
+                    <li *ngIf="userRole=='0'" routerLinkActive="active">
+                        <a routerLink="/vendor-add" class="menu-item">
+                            <i class="ft-shopping-cart"></i>Add Vendor</a>
+                    </li>
+                    <li *ngIf="userRole=='0' || userRole=='1'" routerLinkActive="active">
+                        <a routerLink="/vendor-list" class="menu-item">
+                            <i class="ft-list"></i>Vendor List</a>
+                    </li>
+                    <li *ngIf="userRole=='0'" routerLinkActive="active">
+                        <a routerLink="/salesrep-list" class="menu-item">
+                            <i class="ft-list"></i>Sales Rep. List</a>
+                    </li>
+                    <li *ngIf="userRole=='2'" routerLinkActive="active">
+                        <a routerLink="/customers" class="menu-item">
+                            <i class="icon-users"></i>Customers</a>
+                    </li>
+                    <li *ngIf="userRole=='0'">
+                        <a href="http://com.loycard.co" class="menu-item">
+                            <i class="ft-log-in"></i>CRM Login</a>
+                    </li>
+                    <li *ngIf="userRole=='0'">
+                        <a href="https://www.firebase.com/login/" class="menu-item">
+                            <i class="ft-log-in"></i>Firebase Login</a>
+                    </li>
+                    <li *ngIf="userRole=='0'">
+                        <a href="https://dashboard.stripe.com/login" class="menu-item">
+                            <i class="ft-log-in"></i>Stripe Login</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item has-sub open" *ngIf="isVendor">
+                <a href="#">
+                    <i class="ft-command"></i>
+                    <span class="menu-title">Offer</span>
+                </a>
+                <ul class="menu-content" (click)="onClickMenuContent()">
+                    <li routerLinkActive="active">
+                        <a routerLink="/offer-add" class="menu-item">
+                            <i class="icon-present"></i>Add Offer</a>
+                    </li>
+                    <li routerLinkActive="active">
+                        <a routerLink="/offer-list" class="menu-item">
+                            <i class="ft-list"></i>Offer List</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item has-sub open" *ngIf="userRole=='2'">
+                <a href="#">
+                    <i class="ft-command"></i>
+                    <span class="menu-title">Promotion</span>
+                </a>
+                <ul class="menu-content" (click)="onClickMenuContent()">
+                    <li routerLinkActive="active">
+                        <a routerLink="/promotion-add" class="menu-item">
+                            <i class="icon-tag"></i>Add Promotion</a>
+                    </li>
+                    <li routerLinkActive="active">
+                        <a routerLink="/promotion-list" class="menu-item">
+                            <i class="ft-list"></i>Promotion List</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item has-sub open" *ngIf="isVendor">
+                <a href="#">
+                    <i class="icon-question"></i>
+                    <span class="menu-title">Support</span>
+                </a>
+                <ul class="menu-content">
+                    <li routerLinkActive="active">
+                        <a href="http://loycard.co/contact.php" class="menu-item">
+                            <i class="icon-envelope"></i>Contact Us</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('ul').on('click', '.menu-content', function () {
+            //console.log('>>>>clicked');
+        })
+    });
+</script>

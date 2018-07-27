@@ -1,0 +1,10 @@
+@media only screen and (max-width: 1199px) {
+    .header-navbar .navbar-container ul.nav li a.dropdown-user-link .user-name {
+        display: block !important;
+    }
+}
+@media only screen and (max-width: 480px) {
+    .header-navbar .navbar-header .navbar-brand {
+        left: 35% !important;
+    }
+}
