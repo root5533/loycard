@@ -1,0 +1,27 @@
+/*=========================================================================================
+    File Name: content-sidebar.js
+    Description: Invoices list datables configurations
+    ----------------------------------------------------------------------------------------
+    Item Name: Stack - Responsive Admin Theme
+    Version: 2.1
+    Author: PIXINVENT
+    Author URL: http://www.themeforest.net/user/pixinvent
+==========================================================================================*/
+$(document).ready(function () {
+    if ($(".sidebar-sticky").length) {
+        var headerNavbarHeight, footerNavbarHeight;
+        // Header & Footer offset only for right & left sticky sidebar
+        if ($("body").hasClass('content-right-sidebar') || $("body").hasClass('content-left-sidebar')) {
+            headerNavbarHeight = $('.header-navbar').height();
+            footerNavbarHeight = $('footer.footer').height();
+        }
+        else {
+            headerNavbarHeight = $('.header-navbar').height() + 24;
+            footerNavbarHeight = $('footer.footer').height() + 10;
+        }
+        $(".sidebar-sticky").sticky({
+            topSpacing: headerNavbarHeight,
+            bottomSpacing: footerNavbarHeight
+        });
+    }
+});

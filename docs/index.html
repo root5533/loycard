@@ -1,0 +1,105 @@
+<!doctype html><html lang="en" data-textdirection="ltr" class="loading"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,minimal-ui"><meta name="description" content="Loycard"><meta name="keywords" content="Loycard"><meta name="author" content="INVERT EMO TECH"><title>Loycard</title><base href="loycard"><link rel="icon" type="image/png" href="assets/app/images/favicon.png"><link rel="shortcut icon" type="image/x-icon" href="assets/app/images/ico/favicon.ico"><link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i%7COpen+Sans:300,300i,400,400i,600,600i,700,700i" rel="stylesheet"><link rel="stylesheet" href="./assets/app/vendors/pace/themes/black/pace-theme-flash.css"/><link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet"/><style type="text/css">.pace .pace-activity {
+      top: 19px;
+      right: 19px;
+      display: none;
+    }
+    .page-loading {
+      position: fixed;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      overflow: hidden;
+      background-color: #F5F7FA;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      z-index: -1;
+    }
+    .loading-icon {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 38px;
+      height: 38px;
+      margin-left: -19px;
+      margin-top: -19px;
+    }
+    app-root:empty ~ .page-loading {
+      opacity: 1;
+      z-index: 1;
+    }</style><!-- Google Auto Complete Address form API --><link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"><style type="text/css">/* Always set the map height explicitly to define the size of the div
+ * element that contains the map. */
+#map {
+  height: 100%;
+}
+/* Optional: Makes the sample page fill the window. */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}</style><style>#locationField, #controls {
+    position: relative;
+    width: 480px;
+  }
+  #autocomplete {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 99%;
+  }
+  .label {
+    text-align: right;
+    font-weight: bold;
+    width: 100px;
+    color: #303030;
+  }
+  #address {
+    border: 1px solid #000090;
+    background-color: #f0f0ff;
+    width: 480px;
+    padding-right: 2px;
+  }
+  #address td {
+    font-size: 10pt;
+  }
+  .field {
+    width: 99%;
+  }
+  .slimField {
+    width: 80px;
+  }
+  .wideField {
+    width: 200px;
+  }
+  #locationField {
+    height: 20px;
+    margin-bottom: 2px;
+  }</style><script src="./assets/app/vendors/pace/pace.min.js"></script><script type="text/javascript">(function (window) {
+      // Polyfills DOM4 MouseEvent only on IE11
+      // Fixes ngx-charts line-chart hover
+      // https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/MouseEvent#Polyfill
+      if (!!window.MSInputMethodContext && !!document.documentMode || document.documentMode === 10) {
+        function MouseEvent(eventType, params) {
+          params = params || { bubbles: false, cancelable: false };
+          var mouseEvent = document.createEvent('MouseEvent');
+          mouseEvent.initMouseEvent(eventType, params.bubbles, params.cancelable, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+
+          return mouseEvent;
+        }
+
+        MouseEvent.prototype = Event.prototype;
+
+        window.MouseEvent = MouseEvent;
+      }
+
+      // Initialize PACE
+      window.paceOptions = {
+        document: true,
+        eventLag: true,
+        restartOnPushState: true,
+        restartOnRequestAfter: true,
+        ajax: {
+          trackMethods: [ 'POST','GET']
+        }
+      };
+    })(window);</script><script src="https://checkout.stripe.com/checkout.js"></script><link href="styles.c70582e050207cea5330.bundle.css" rel="stylesheet"/></head><body data-open="click" data-menu="vertical-menu" data-col="" class="vertical-layout vertical-menu fixed-navbar"><app-root></app-root><div class="page-loading"><img src="assets/app/images/oval.svg" class="loading-icon"/></div><!-- Google Auto Complete Address form API --><script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpNUNiuwdwVPH5gtsZ7NUQN_-zccLhqPY&amp;libraries=places" async defer="defer"></script><!-- BEGIN VENDOR JS--><script src="assets/app-assets/vendors/js/vendors.min.js" type="text/javascript"></script><!-- BEGIN VENDOR JS--><script src="assets/app-assets/js/core/app-menu.js" type="text/javascript"></script><script src="assets/app-assets/js/core/app.js" type="text/javascript"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script><script type="text/javascript" src="inline.2640b3cfcfcf59b5e7a8.bundle.js"></script><script type="text/javascript" src="polyfills.0a8dc231f313b418c99e.bundle.js"></script><script type="text/javascript" src="scripts.a617c5f9522b7fad1bcd.bundle.js"></script><script type="text/javascript" src="main.3735b562089141edaf50.bundle.js"></script></body></html>
